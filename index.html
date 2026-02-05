@@ -1,45 +1,58 @@
-#start{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.85);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  z-index:9999;
-}
-#start button{
-  padding:16px 26px;
-  font-size:20px;
-  border-radius:30px;
-  border:none;
-  background:#ff4d6d;
-  color:#fff;
-  cursor:pointer;
-}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>For You ❤️</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="card">
-  <div class="glow"></div>
-  <h1 id="type"></h1>
-
-  <div class="actions">
-    <button id="yes" onclick="onYes()">Yes ❤️</button>
-    <button id="no" onmouseover="runNo()">No 💔</button>
+<!-- START OVERLAY: user enters name & starts -->
+<div id="start" class="overlay" aria-hidden="false">
+  <div class="start-card">
+    <h2>Make it personal ✨</h2>
+    <label for="nameInput" class="sr-only">Enter name</label>
+    <input id="nameInput" placeholder="Type their name (optional)" maxlength="24" />
+    <div class="start-controls">
+      <label class="switch">
+        <input id="musicToggle" type="checkbox" checked>
+        <span class="slider"></span>
+      </label>
+      <span class="small">Music</span>
+      <button id="startBtn" class="primary">Start the surprise 💖</button>
+    </div>
+    <p class="hint">Tap anywhere to close overlay after start (mobile friendly)</p>
   </div>
 </div>
 
-<audio id="bgm" loop>
+<!-- MAIN CARD -->
+<div class="card" role="main" aria-live="polite">
+  <div class="glow" aria-hidden="true"></div>
+  <h1 id="typeArea" aria-label="message"></h1>
+
+  <div class="actions" id="actionRow">
+    <button id="yes" class="yesBtn" aria-label="Yes, I will">Yes ❤️</button>
+    <button id="no" class="noBtn" aria-label="No, I won't">No 💔</button>
+  </div>
+
+  <div id="finalControls" class="final" hidden>
+    <button id="shareBtn">Share ❤️</button>
+    <button id="copyBtn">Copy Message</button>
+    <button id="restartBtn">Restart</button>
+  </div>
+</div>
+
+<!-- Background music (optional) - will only play after user tap -->
+<audio id="bgm" loop preload="auto">
   <source src="https://cdn.pixabay.com/audio/2023/03/27/audio_8d6e9a9bdb.mp3" type="audio/mpeg">
 </audio>
 
 <script src="script.js"></script>
 </body>
 </html>
+<div id="start" class="overlay">
+  <input id="nameInput" placeholder="Type their name (optional)" />
+  <input id="musicToggle" type="checkbox" checked>
+  <button id="startBtn">Start the surprise 💖</button>
+</div>
