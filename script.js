@@ -68,23 +68,31 @@ function onYes(){
 function startLove(){
   const name = (nameInput.value || "").trim();
 
-  lines = linesTemplate.map(l =>
-    name ? l.replace("{name}", name) : l
-  );
+  lines = linesTemplate.map(l => name ? l.replace("{name}", name) : l);
 
+  // overlay hide
   startOverlay.style.display = "none";
 
-  if(musicToggle.checked){
-    bgm.play().catch(()=>{});
-  }
+  // 🔊 FORCE MUSIC PLAY (user click ke saath)
+  bgm.currentTime = 0;
+  bgm.muted = false;
+  bgm.volume = 1;
 
+  bgm.play()
+    .then(()=>console.log("Music playing"))
+    .catch(err=>console.log("Music blocked:", err));
+
+  // typing start
   typeEl.innerHTML = "";
-  li = 0; ci = 0;
+  li = 0; 
+  ci = 0;
   typeSequence();
 
+  // hearts start
   if(heartTimer) clearInterval(heartTimer);
   heartTimer = setInterval(spawnHeart, 700);
 }
+
 
 /* ---------- EVENTS ---------- */
 startBtn.addEventListener("click", startLove);
