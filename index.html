@@ -8,42 +8,39 @@
 </head>
 <body>
 
-<!-- START OVERLAY: user enters name & starts -->
-<div id="start" class="overlay" aria-hidden="false">
+<!-- START OVERLAY -->
+<div id="start" class="overlay">
   <div class="start-card">
     <h2>Make it personal ✨</h2>
-    <label for="nameInput" class="sr-only">Enter name</label>
-    <input id="nameInput" placeholder="Type their name (optional)" maxlength="24" />
+
+    <input id="nameInput" placeholder="Type their name (optional)" maxlength="24">
+
     <div class="start-controls">
       <label class="switch">
         <input id="musicToggle" type="checkbox" checked>
         <span class="slider"></span>
       </label>
       <span class="small">Music</span>
-      <button id="startBtn" class="primary">Start the surprise 💖</button>
     </div>
-    <p class="hint">Tap anywhere to close overlay after start (mobile friendly)</p>
+
+    <button id="startBtn" class="primary">Start the surprise 💖</button>
+    <p class="hint">Tap to start</p>
   </div>
 </div>
 
 <!-- MAIN CARD -->
-<div class="card" role="main" aria-live="polite">
-  <div class="glow" aria-hidden="true"></div>
-  <h1 id="typeArea" aria-label="message"></h1>
+<div class="card">
+  <div class="glow"></div>
 
-  <div class="actions" id="actionRow">
-    <button id="yes" class="yesBtn" aria-label="Yes, I will">Yes ❤️</button>
-    <button id="no" class="noBtn" aria-label="No, I won't">No 💔</button>
-  </div>
+  <h1 id="typeArea"></h1>
 
-  <div id="finalControls" class="final" hidden>
-    <button id="shareBtn">Share ❤️</button>
-    <button id="copyBtn">Copy Message</button>
-    <button id="restartBtn">Restart</button>
+  <div class="actions">
+    <button id="yes" class="yesBtn">Yes ❤️</button>
+    <button id="no" class="noBtn">No 💔</button>
   </div>
 </div>
 
-<!-- Background music (optional) - will only play after user tap -->
+<!-- AUDIO -->
 <audio id="bgm" loop preload="auto">
   <source src="https://cdn.pixabay.com/audio/2023/03/27/audio_8d6e9a9bdb.mp3" type="audio/mpeg">
 </audio>
@@ -51,18 +48,3 @@
 <script src="script.js"></script>
 </body>
 </html>
-<div id="start" class="overlay">
-  <input id="nameInput" placeholder="Type their name (optional)" />
-  <input id="musicToggle" type="checkbox" checked>
-  <button id="startBtn">Start the surprise 💖</button>
-</div>
-<div class="card">
-  <h1 id="typeArea"></h1>
-  <div class="actions">
-    <button id="yes">Yes</button>
-    <button id="no">No</button>
-  </div>
-</div>
-<audio id="bgm" loop preload="auto">
-  <source src="...mp3" type="audio/mpeg">
-</audio>
