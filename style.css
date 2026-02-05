@@ -1,89 +1,166 @@
-/* style.css - premium polished look */
+/* style.css – FINAL FIXED & POLISHED */
+
 :root{
-  --bg1:#ff6a88; --bg2:#ff99ac; --accent:#ff4d6d;
-  --card:#ffffffee; --muted:#666;
-  --glass: rgba(255,255,255,.85);
-}
-*{box-sizing:border-box}
-html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial}
-body{
-  display:flex;align-items:center;justify-content:center;
-  background: radial-gradient(1200px 600px at 50% -10%, #ffd1dc, transparent),
-              linear-gradient(135deg,var(--bg1),var(--bg2));
-  overflow:hidden;color:#222;
+  --bg1:#a18cd1;
+  --bg2:#fbc2eb;
+  --accent:#ff6b6b;
+  --card:#ffffffee;
+  --muted:#666;
 }
 
-/* Card */
+*{box-sizing:border-box}
+
+html,body{
+  height:100%;
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;
+}
+
+body{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(1200px 600px at 50% -10%, #ffd1dc, transparent),
+    linear-gradient(135deg,var(--bg1),var(--bg2));
+  overflow:hidden;
+  color:#222;
+}
+
+/* ================= CARD ================= */
+
 .card{
   width:min(92%,420px);
-  max-width:420px;
   background:var(--card);
   border-radius:26px;
   padding:36px 26px;
   box-shadow:0 30px 60px rgba(0,0,0,.22);
-  position:relative;text-align:center;
+  position:relative;
+  text-align:center;
+  z-index:2;
 }
+
 .glow{
-  position:absolute;inset:-2px;border-radius:28px;z-index:-1;filter:blur(18px);
-  background:conic-gradient(from 0deg, transparent, var(--accent), transparent);opacity:.3;
+  position:absolute;
+  inset:-2px;
+  border-radius:28px;
+  z-index:-1;
+  filter:blur(18px);
+  background:conic-gradient(from 0deg, transparent, var(--accent), transparent);
+  opacity:.3;
   animation:spin 10s linear infinite;
 }
-@keyframes spin{to{transform:rotate(360deg)}}
+
+@keyframes spin{
+  to{transform:rotate(360deg)}
+}
+
 #typeArea{
-  min-height:140px;font-weight:700;font-size:20px;line-height:1.4;
-  letter-spacing:.2px;
+  min-height:140px;
+  font-weight:700;
+  font-size:20px;
+  line-height:1.4;
 }
 
-/* Actions */
-.actions{position:relative;height:72px;margin-top:8px}
-button{cursor:pointer;border:0;border-radius:999px;padding:12px 22px;font-weight:700; font-size:16px}
+/* ================= BUTTONS ================= */
+
+.actions{
+  position:relative;
+  height:72px;
+  margin-top:10px;
+}
+
+button{
+  cursor:pointer;
+  border:0;
+  border-radius:999px;
+  padding:12px 22px;
+  font-weight:700;
+  font-size:16px;
+}
+
 .yesBtn{
-  background:linear-gradient(135deg,#ff2f5e,#ff6f91);color:#fff;box-shadow:0 10px 22px rgba(255,77,109,.35);
-  transition:transform .12s ease, box-shadow .12s ease;
+  background:linear-gradient(135deg,#ff2f5e,#ff6f91);
+  color:#fff;
+  box-shadow:0 10px 22px rgba(255,77,109,.35);
 }
-.yesBtn:active{transform:scale(.98)}
-.noBtn{position:absolute;left:58%;background:#f0f0f0;color:#333}
 
-/* final controls after yes */
-.final{display:flex;gap:10px;justify-content:center;margin-top:16px}
-.final button{padding:10px 14px;border-radius:12px;background:#fff;box-shadow:0 6px 18px rgba(0,0,0,.08);}
+.noBtn{
+  position:absolute;
+  left:58%;
+  background:#f0f0f0;
+  color:#333;
+}
 
-/* overlay start */
-.overlay{position:fixed;inset:0;background:rgba(0,0,0,.72);display:flex;align-items:center;justify-content:center;z-index:9999}
-.start-card{width:min(90%,400px);background:linear-gradient(180deg,#fff,#fff);padding:22px;border-radius:18px;text-align:center}
-.start-card h2{margin:0 0 12px 0}
-.start-card input{width:100%;padding:12px;border-radius:12px;border:1px solid #eee;margin-bottom:12px;font-size:16px}
-.start-controls{display:flex;align-items:center;gap:10px;justify-content:center}
-.primary{background:var(--accent);color:#fff;padding:12px 16px;border-radius:12px}
+/* ================= OVERLAY (IMPORTANT FIX) ================= */
+
+.overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:99999;          /* 🔥 MUST */
+  pointer-events:auto;   /* 🔥 MUST */
+}
+
+.start-card{
+  width:min(90%,400px);
+  background:#fff;
+  padding:22px;
+  border-radius:18px;
+  text-align:center;
+  pointer-events:auto;   /* 🔥 MUST */
+}
+
+.start-card input{
+  width:100%;
+  padding:12px;
+  border-radius:12px;
+  border:1px solid #eee;
+  margin-bottom:12px;
+  font-size:16px;
+}
+
+.primary{
+  background:var(--accent);
+  color:#fff;
+  padding:12px 16px;
+  border-radius:12px;
+}
+
 .small{color:var(--muted);font-size:13px}
 .hint{font-size:12px;color:#999;margin-top:10px}
 
-/* tiny toggle style */
-.switch{position:relative;display:inline-block;width:44px;height:24px}
-.switch input{display:none}
-.slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#ccc;border-radius:24px;transition:.2s}
-.slider:before{position:absolute;content:"";height:18px;width:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s}
-.switch input:checked + .slider{background:linear-gradient(90deg,#ff6b86,#ff3d63)}
-.switch input:checked + .slider:before{transform:translateX(20px)}
+/* ================= HEARTS ================= */
 
-/* heart & confetti */
-.heart{position:absolute;pointer-events:none;animation:float 4s ease-out forwards;opacity:.95}
-@keyframes float{from{transform:translateY(0) scale(.85);opacity:1}to{transform:translateY(-120vh) scale(1.4);opacity:0}}
-.sr-only{position:absolute;left:-9999px}
+.heart{
+  position:absolute;
+  pointer-events:none;
+  animation:float 4s ease-out forwards;
+}
 
-/* responsive tweaks */
+@keyframes float{
+  from{transform:translateY(0) scale(.85);opacity:1}
+  to{transform:translateY(-120vh) scale(1.4);opacity:0}
+}
+
+/* ================= HEARTBEAT ================= */
+
+@keyframes heartbeat{
+  0%{transform:scale(1)}
+  25%{transform:scale(1.05)}
+  50%{transform:scale(1)}
+}
+
+.pulse{
+  animation:heartbeat 1s infinite;
+}
+
+/* ================= RESPONSIVE ================= */
+
 @media (max-width:420px){
   #typeArea{font-size:18px;min-height:120px}
-  .yesBtn,.noBtn{font-size:15px;padding:10px 14px}
-}
-@keyframes heartbeat {
-  0% { transform: scale(1); }
-  25% { transform: scale(1.05); }
-  50% { transform: scale(1); }
-}
-.pulse { animation: heartbeat 1.0s infinite; }
-:root{
-  --bg1: #a18cd1;
-  --bg2: #fbc2eb;
-  --accent: #ff6b6b;
+  button{font-size:15px;padding:10px 14px}
 }
